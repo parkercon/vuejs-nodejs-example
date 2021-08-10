@@ -15,7 +15,7 @@
         name: 'DisplayBoard',
         props: ['numberOfUsers'],
         methods: {
-            getAllUsers() {
+            getAllUsers() { //errors
                 this.$emit('getAllUsers')
             }
         }

@@ -12,8 +12,16 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../my-app/dist')));
 
 app.get('/api/users', (req, res) => {
-  console.log('api/users called!!!!!!!')
+  console.log('api/users called')
   res.json(users);
+});
+
+app.post('/api/error', (req, res) => {
+  console.log('api/error called')
+  const err = req.body.error;
+  const info = req.body.information;
+  const stack = req.body.stack;
+  console.log(`\nMy Error: ${err}\nInfo: ${info}\n Error Stack: ${stack}\n\n`)
 });
 
 app.post('/api/user', (req, res) => {
@@ -21,7 +29,7 @@ app.post('/api/user', (req, res) => {
   user.id = randomId(10);
   console.log('Adding user:::::', user);
   users.push(user);
-  res.json("user addedd");
+  res.json("user added");
 });
 
 app.get('/', (req,res) => {
